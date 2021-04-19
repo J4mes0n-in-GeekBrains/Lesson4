@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Lesson4 {
     public static char[][] map;
-    public static final int SIZE = 3;
-    public static final int DOTS_TO_WIN = 3;
+    public static final int SIZE = 5;
+    public static final int DOTS_TO_WIN = 4;
 
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
@@ -102,20 +102,20 @@ public class Lesson4 {
 
     public static boolean checkWin0 (char symb) {
         int result = 0, result2 = 0, result3 = 0, result4 = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < SIZE; i++) {
             result = 0;
             result2 = 0;
             if (map[i][i] == symb)
                 result3 += 1;
-            if (map[2 - i][i] == symb)
+            if (map[(SIZE - 1) - i][i] == symb)
                 result4 += 1;
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < SIZE; j++) {
                 if (map[i][j] == symb)
                     result += 1;
                 if (map[j][i] == symb)
                     result2 += 1;
             }
-            if (result == 3 || result2 == 3 || result3 == 3 || result4 == 3)
+            if (result == DOTS_TO_WIN || result2 == DOTS_TO_WIN || result3 == DOTS_TO_WIN || result4 == DOTS_TO_WIN)
                 return true;
         }
         return false;
